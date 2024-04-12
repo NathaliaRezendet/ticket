@@ -20,11 +20,11 @@ if(isset($_POST['nome_supervisor']) && isset($_POST['senha'])){
     $senha = $conn->quote($senha);
 
     # Consultar o banco de dados
-    $query = "SELECT id_supervisor FROM tblusuario WHERE nome_supervisor=$usuario AND senha=$senha";
+    $query = "SELECT id_supervisor FROM tbl_usuario WHERE nome_supervisor=$usuario AND senha=$senha";
 
     try {
         $result = $conn->query($query);
-
+        
     } catch (PDOException $err) {
         echo "Erro na consulta: " . $err->getMessage();
         exit;
@@ -33,16 +33,20 @@ if(isset($_POST['nome_supervisor']) && isset($_POST['senha'])){
     if ($result->rowCount() == 1) {
         $row = $result->fetch(PDO::FETCH_ASSOC);
         $_SESSION['id_supervisor'] = $row['id_supervisor'];
+        
+        // Redirecionar para lista_tecnico_.php
         header('location:lista_tecnico_.php');
         exit;
     } else {
         echo 'Não foi possível fazer login.';
         header("location:index.php?msg=erro_login");
+        exit;
     }    
     
     $conn = null; // Fechar a conexão
 } else {
-    echo 'Forma de acesso inválidada pelo administrador';
+    echo 'Forma de acesso inválida pelo administrador';
     header("location:index.php?msg=erro_dados");
+    exit;
 }
 ?>

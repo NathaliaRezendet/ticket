@@ -15,15 +15,11 @@
     ?>
 
     <!-- Image and text -->
-    <img src="img/312860882_567125738551129_7490135894950538800_n.png" id="imgplayfibra" alt="">
-
     <div class="container">
         <div class="col-md-4"></div>
         <div class="col-md-4">
-            <div class="panel panel-default panel-login">
-                <div class="panel-heading text-center" id="cortitulo">LOGIN INICIAL</div>
-                <div class="panel-body">
-                    <form action="autentica.php" method="POST">
+
+                    <form class="login-prin" action="autentica.php" method="POST">
                         <!-- input login-->
                         <div class="input-group">
                             <span class="input-group-addon">
@@ -43,7 +39,6 @@
                             <button type="submit" class="btn btn-success bt-entrar">ENTRAR</button>
                         </div>
                     </form>
-                </div>
 
                 <?php 
                 if (isset($_GET['msg'])){  
@@ -55,7 +50,6 @@
                 <?php
                 }
                 ?>
-            </div>
         </div>
         <div class="col-md-4"></div>
     </div>

@@ -1,90 +1,324 @@
+body {
+  background-color: #f2f2f2 !important;
+}
 form{
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
+
+/* Adicione outras regras de mídia query conforme necessário */
+.container {  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+}
+
 #imgplayfibra
 {
-    margin-top: 30px;
-    width: 100px;
-    border-radius: 30px;
-    margin-left: 47%;
+  margin-top: 30px;
+  width: 150px;
+  border-radius: 5px;
+  margin-left: 45%;
 }
+
 #conceitoImg
 {
-    margin-top: 0px;
-    width: 30px;
-    border-radius: 30px;
-    margin-left: 47%;
+  margin-top: 0px;
+  width: 30px;
+  border-radius: 30px;
+  margin-left: 47%;
 }
 
 #imgplayfibraNav{
-   
-    width: 30px;
-    border-radius: 30px;
-   
+ 
+  width: 30px;
+  border-radius: 30px;
+ 
 }
 #tituloPlay
 {
-    text-align: center;
-    margin-top: 40px;
+  text-align: center;
+  margin-top: 40px;
 /*margin-left 450 para celular*/
 }
 #name{
-    color: #fc6c04;
-    
+  color: #fc6c04;
+  
+}
+button.btn.btn-warning {
+  background-color: #fc6c04 !important;
+  color: white !important;
+}
+
+.btn-success {
+  background-color: #fc6c04 !important;
+  border: #fc6c04 !important;
 }
 h3{
-    margin-right: 35px;
+  margin-right: 35px;
 
 }
 .panel-login
 {
-    margin-top: 70px;
+  margin-top: 70px;
 
 }
 .bt-entrar
 {
-    margin-top: 20px;
+  margin-top: 20px;
 }
 #cortitulo
 {
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: #fc6c04;
-    font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #fc6c04;
+  font-weight: bold;
+  color: white;
 }
 .label-group
 {
-    margin-top: 20px;
-    font-size: 16pt;
-    font-weight: bold;
+  margin-top: 20px;
+  font-size: 16pt;
+  font-weight: bold;
 }
 
 #nota
 {
-    margin-top: 20px;
-    font-weight: bold;
+  margin-top: 20px;
+  font-weight: bold;
 }
 a{
-    border-radius: 4px;
+  border-radius: 4px;
 
-    border-color: #fc6c04;
+  border-color: #fc6c04;
 }
 
 #btVoltar{
 
-  position: absolute;
-  margin-left: 990px;
+position: absolute;
+margin-left: 990px;
 }
 .imagem-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    width: 900px; /* Ajuste a largura conforme necessário */
+  flex-wrap: wrap;
+  justify-content: space-around;
+  width: 900px; /* Ajuste a largura conforme necessário */
 }
 .imagem-item {
-    margin: 10px;
-    width: 200px; /* Ajuste a largura conforme necessário */
+  margin: 10px;
+  width: 200px; /* Ajuste a largura conforme necessário */
 }
 .imagem-item img {
+  width: 100%;
+  height: auto;
+}
+
+.btn-round {
+  border-radius: 50px; /* Define um raio grande para criar um botão redondo */
+  padding: 15px 30px; /* Ajusta o preenchimento interno */
+  font-size: 16px; /* Define o tamanho da fonte */
+  border: none; /* Remove a borda */
+}
+
+.btn-round:hover {
+  background-color: #fc6c04 !important; /* Muda a cor de fundo quando o mouse passa por cima */
+  color: #fff; /* Altera a cor do texto quando o mouse passa por cima */
+}
+
+.btn-primary {
+  background-color: #51bd9c;
+}
+
+form {
+  background-color: #fc6c04;
+  padding: 23px;
+  border-radius: 15px;
+  margin-bottom: 30px;
+  width: 800px;
+  display: table;
+  text-align: -webkit-center;
+  margin: 0 25%;
+  box-shadow: 0px 4px 8px rgb(0 0 0 / 87%);
+}
+
+.form-group {
+  margin-bottom: 0rem;
+}
+
+.solucao {
+  margin: 5px;
+}
+
+select#\$atendente, select#\$tipo {
+  width: 50%;
+} 
+textarea.form-control {
+  height: auto;
+  width: 70% !important;
+  margin: 0 0 15px 15px;
+}
+
+textarea#observacao-outros {
+  width: 162% !important;
+}
+
+select#assunto1 {
+  width: 243px;
+}
+
+input.ticket-control{
+  width: 100px;
+}
+
+.row.justify-content-center {
+  justify-content: space-between !important;
+}
+
+select#assunto {
+  width: 230px;
+  margin-top: 31px;
+}
+
+label {
+  margin-bottom: -0.5rem !important;
+  min-inline-size: fit-content;
+}
+
+p.mt-3 {
+  text-align: left;
+  font-size: larger;
+  font-weight: bolder;
+  text-transform: uppercase;
+}
+
+p.tarefa1, .tarefa2, .tarefa3 {
+  text-align-last: left;
+  text-transform: uppercase;
+}
+
+button.btn.btn-primary {
+  margin-top: 37px;
+}
+
+button.btn.btn-danger {
+  margin-top: 35px !important;
+}
+
+button.btn {
+  background-color: #fc6c04 !important;
+  border: 2px solid white !important;
+}
+
+.btn-contagem {
+  border: #ffffff00;
+  background-color: #ffffff00 !important;
+}
+
+input#filtroInputCliente {
+  margin: 15px 29px 15px 17px;
+}
+
+.tipo-de-problema {
+  margin: 7px;
+}
+select#cliente {
+  width: 300px;
+  margin: 5px;
+}
+
+form.login-prin {
+  width: max-content;
+  margin: 153%;
+  float: right;
+}
+
+/* Estilos para telas menores que 768px */
+@media screen and (max-width: 768px) {
+  #imgplayfibra {
+    width: 100px;
+    margin-left: 40%;
+  }
+
+  #conceitoImg {
+    width: 20px;
+    margin-left: 45%;
+  }
+
+  #tituloPlay {
+    margin-left: 10%;
+  }
+
+  .imagem-container {
+    width: 90%; /* Ajusta a largura conforme necessário */
+  }
+
+  .imagem-item {
+    width: 100%; /* Ajusta a largura conforme necessário */
+  }
+
+  form {
     width: 100%;
-    height: auto;
+  }
+
+  textarea#observacao-outros {
+    width: 100% !important;
+  }
+
+  select#assunto1 {
+    width: 100%;
+  }
+
+  select#assunto {
+    width: 100%;
+    margin-top: 15px;
+  }
+}
+
+.ticket {
+  white-space-collapse: preserve-breaks;
+}
+/* Estilos para telas menores que 576px */
+@media screen and (max-width: 576px) {
+  form {
+    font-size: large;
+    flex-direction: column;
+  }
+
+  .play {
+    width: 50px;
+  }
+  
+  .pause {
+    width: 50px;
+  }
+
+  p.mt-3 {
+    text-align: -webkit-center;
+    margin-bottom: 15px;
+    margin-left: 35px;
+  }
+  p.tarefa1 {
+    margin-left: 38%;
+  }
+
+  form.login-prin {
+    margin-right: 15px;
+    margin-left: -58px;
+  }
+}
+
+
+@media screen and (max-width: 768px) {
+  form {
+    min-width: max-content;
+    width: 66%;
+    margin-left: 58px;
+  }
+
+  select#\$atendente, select#\$tipo {
+    width: 100%;
+}
+
+textarea#solucao {
+  width: 85% !important;
+  margin-left: 5px;
+}
 }
