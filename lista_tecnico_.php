@@ -4,7 +4,7 @@
     include("conn.php");
     include("menu.php");
 
-    // Função para gerar o ticket aleatório de 5 dígitos
+    // Ticket aleatório de 5 dígitos
     function generateRandomTicket() {
         return rand(10000, 99999);
     }
@@ -57,12 +57,13 @@
             $tipo_problema = isset($_POST['tipo_problema'])? $_POST['tipo_problema'] : null;
             $solucao = isset($_POST['solucao'])? $_POST['solucao'] : null;
             $observacao = isset($_POST['observacao'])? $_POST['observacao'] : null;
+            $nome_cliente = isset($_POST['nome_cliente'])? $_POST['nome_cliente'] : null; // Salvar o ID do cliente selecionado
 
             if(isset($_POST['contagem'])) {
                 switch($_POST['contagem']) {
                     case 1:
-                        $id_cliente = isset($_POST['cliente'])? $_POST['cliente'] : null; // Corrigir nome do campo
-                        $query = "INSERT INTO tbl_ticket (numTicket, manualTicket, solicitante, id_supervisor, horaIni, observacao, tipo, solucao, tipo_problema, id_cliente) VALUES (:numTicket, :manualTicket, :solicitante, :id_supervisor, :horaIni, :observacao, :tipo, :solucao, :tipo_problema, :id_cliente)"; // Adicionado :nome_cliente
+                        $nome_cliente = isset($_POST['nome_cliente'])? $_POST['nome_cliente'] : null; // Corrigir nome do campo
+                        $query = "INSERT INTO tbl_ticket (numTicket, manualTicket, solicitante, id_supervisor, horaIni, observacao, tipo, solucao, tipo_problema, nome_cliente) VALUES (:numTicket, :manualTicket, :solicitante, :id_supervisor, :horaIni, :observacao, :tipo, :solucao, :tipo_problema, :nome_cliente)"; // Adicionado :nome_cliente
                         break;
                     default:
                         echo "Contagem inválida.";
@@ -80,7 +81,7 @@
                     $stmt->bindParam(':tipo', $tipo);
                     $stmt->bindParam(':tipo_problema', $tipo_problema);
                     $stmt->bindParam(':solucao', $solucao);
-                    $stmt->bindParam(':id_cliente', $id_cliente);
+                    $stmt->bindParam(':nome_cliente', $nome_cliente);
                     
     
                     $stmt->execute();
@@ -129,89 +130,89 @@
         }
     }
 
-    if(isset($_POST['btnIniciar2'])) {
-        $horaIni = date('Y-m-d H:i:s');
-        $id_supervisor = isset($_SESSION['id_supervisor'])? $_SESSION['id_supervisor'] : null;
+    // if(isset($_POST['btnIniciar2'])) {
+    //     $horaIni = date('Y-m-d H:i:s');
+    //     $id_supervisor = isset($_SESSION['id_supervisor'])? $_SESSION['id_supervisor'] : null;
 
-        if($id_supervisor) {
-            $numTicket = generateRandomTicket(); // Define $numTicket aqui
-            $manualTicket = isset($_POST['manualTicket'])? $_POST['manualTicket'] : null;
-            $solicitante = isset($_POST['solicitante'])? $_POST['solicitante'] : null;
-            $tipo = isset($_POST['tipo'])? $_POST['tipo'] : null;
-            $tipo_problema = isset($_POST['tipo_problema'])? $_POST['tipo_problema'] : null;
-            $solucao = isset($_POST['solucao'])? $_POST['solucao'] : null;
-            $observacao = isset($_POST['observacao'])? $_POST['observacao'] : null;
+    //     if($id_supervisor) {
+    //         $numTicket = generateRandomTicket(); // Define $numTicket aqui
+    //         $manualTicket = isset($_POST['manualTicket'])? $_POST['manualTicket'] : null;
+    //         $solicitante = isset($_POST['solicitante'])? $_POST['solicitante'] : null;
+    //         $tipo = isset($_POST['tipo'])? $_POST['tipo'] : null;
+    //         $tipo_problema = isset($_POST['tipo_problema'])? $_POST['tipo_problema'] : null;
+    //         $solucao = isset($_POST['solucao'])? $_POST['solucao'] : null;
+    //         $observacao = isset($_POST['observacao'])? $_POST['observacao'] : null;
 
-            if(isset($_POST['contagem'])) {
-                switch($_POST['contagem']) {
-                    case 1:
-                        $id_cliente = isset($_POST['cliente'])? $_POST['cliente'] : null; // Corrigir nome do campo
-                        $query = "INSERT INTO tbl_ticket (numTicket, manualTicket, solicitante, id_supervisor, horaIni, observacao, tipo, solucao, tipo_problema, id_cliente) VALUES (:numTicket, :manualTicket, :solicitante, :id_supervisor, :horaIni, :observacao, :tipo, :solucao, :tipo_problema, :id_cliente)"; // Adicionado :nome_cliente
-                        break;
-                    default:
-                        echo "Contagem inválida.";
-                        break;
-                }
+    //         if(isset($_POST['contagem'])) {
+    //             switch($_POST['contagem']) {
+    //                 case 1:
+    //                     $nome_cliente = isset($_POST['cliente'])? $_POST['cliente'] : null; // Corrigir nome do campo
+    //                     $query = "INSERT INTO tbl_ticket (numTicket, manualTicket, solicitante, id_supervisor, horaIni, observacao, tipo, solucao, tipo_problema, nome_cliente) VALUES (:numTicket, :manualTicket, :solicitante, :id_supervisor, :horaIni, :observacao, :tipo, :solucao, :tipo_problema, :nome_cliente)"; // Adicionado :nome_cliente
+    //                     break;
+    //                 default:
+    //                     echo "Contagem inválida.";
+    //                     break;
+    //             }
             
-                try {
-                    $stmt = $conn->prepare($query);
-                    $stmt->bindParam(':horaIni', $horaIni);
-                    $stmt->bindParam(':id_supervisor', $id_supervisor);
-                    $stmt->bindParam(':numTicket', $numTicket);
-                    $stmt->bindParam(':manualTicket', $manualTicket);
-                    $stmt->bindParam(':observacao', $observacao);
-                    $stmt->bindParam(':solicitante', $solicitante);
-                    $stmt->bindParam(':tipo', $tipo);
-                    $stmt->bindParam(':tipo_problema', $tipo_problema);
-                    $stmt->bindParam(':solucao', $solucao);
-                    $stmt->bindParam(':id_cliente', $id_cliente);
+    //             try {
+    //                 $stmt = $conn->prepare($query);
+    //                 $stmt->bindParam(':horaIni', $horaIni);
+    //                 $stmt->bindParam(':id_supervisor', $id_supervisor);
+    //                 $stmt->bindParam(':numTicket', $numTicket);
+    //                 $stmt->bindParam(':manualTicket', $manualTicket);
+    //                 $stmt->bindParam(':observacao', $observacao);
+    //                 $stmt->bindParam(':solicitante', $solicitante);
+    //                 $stmt->bindParam(':tipo', $tipo);
+    //                 $stmt->bindParam(':tipo_problema', $tipo_problema);
+    //                 $stmt->bindParam(':solucao', $solucao);
+    //                 $stmt->bindParam(':nome_cliente', $nome_cliente);
                     
     
-                    $stmt->execute();
-                    echo "Contagem iniciada com sucesso.";
-                } catch(PDOException $e) {
-                    echo "Erro ao iniciar a contagem: ". $e->getMessage();
-                }
-            } else {
-                echo "Contagem não especificada.";
-            }
-        }
-    }        
+    //                 $stmt->execute();
+    //                 echo "Contagem iniciada com sucesso.";
+    //             } catch(PDOException $e) {
+    //                 echo "Erro ao iniciar a contagem: ". $e->getMessage();
+    //             }
+    //         } else {
+    //             echo "Contagem não especificada.";
+    //         }
+    //     }
+    // }        
 
-    if(isset($_POST['btnParar2'])) {
-        $horaFinal = date('Y-m-d H:i:s');
+    // if(isset($_POST['btnParar2'])) {
+    //     $horaFinal = date('Y-m-d H:i:s');
 
-        if(isset($_POST['numTicket'])) {
-            $numTicket = $_POST['numTicket'];
-            if(isset($_POST['contagem-parar'])) {
-                switch($_POST['contagem-parar']) {
-                    case 1:
-                        $query = "UPDATE tbl_ticket SET horaFinal = :horaFinal WHERE numTicket = :numTicket";
-                        break;
-                    default:
-                        echo "Contagem inválida.";
-                        break;
-                }
+    //     if(isset($_POST['numTicket'])) {
+    //         $numTicket = $_POST['numTicket'];
+    //         if(isset($_POST['contagem-parar'])) {
+    //             switch($_POST['contagem-parar']) {
+    //                 case 1:
+    //                     $query = "UPDATE tbl_ticket SET horaFinal = :horaFinal WHERE numTicket = :numTicket";
+    //                     break;
+    //                 default:
+    //                     echo "Contagem inválida.";
+    //                     break;
+    //             }
 
-                try {
-                    $stmt = $conn->prepare($query);
-                    $stmt->bindParam(':horaFinal', $horaFinal);
-                    $stmt->bindParam(':numTicket', $numTicket);
-                    $stmt->execute();
+    //             try {
+    //                 $stmt = $conn->prepare($query);
+    //                 $stmt->bindParam(':horaFinal', $horaFinal);
+    //                 $stmt->bindParam(':numTicket', $numTicket);
+    //                 $stmt->execute();
 
-                    unset($numTicket);
-                    unset($horaIni);
-                    echo "Contagem parada com sucesso.";
-                } catch(PDOException $e) {
-                    echo "Erro ao parar a contagem: ". $e->getMessage();
-                }
-            } else {
-                echo "Contagem para parar não especificada.";
-            }
-        } else {
-            echo "Número de ticket não especificado.";
-        }
-    }
+    //                 unset($numTicket);
+    //                 unset($horaIni);
+    //                 echo "Contagem parada com sucesso.";
+    //             } catch(PDOException $e) {
+    //                 echo "Erro ao parar a contagem: ". $e->getMessage();
+    //             }
+    //         } else {
+    //             echo "Contagem para parar não especificada.";
+    //         }
+    //     } else {
+    //         echo "Número de ticket não especificado.";
+    //     }
+    // }
 ?>
 
 
@@ -272,15 +273,15 @@
                     </select>
                 </div> 
 
-                    <div id="filtroCliente" style="display: none;">
-                        <label for="filtroCliente">Filtrar Cliente:</label>
-                        <input type="text" id="filtroInputCliente" oninput="filtrarClientes()" placeholder="Digite o nome do cliente">
-                        <select class="form-control" id="cliente" name="nome">
-                            <?php foreach ($clientes as $cliente) { ?>
-                                <option value="<?php echo $cliente['id']; ?>"><?php echo $cliente['razao_social']; ?></option>
-                            <?php } ?>
-                        </select>
-                    </div>     
+                <div id="filtroCliente" style="display: none;">
+                    <label for="filtroCliente">Filtrar Cliente:</label>
+                    <input type="text" id="filtroInputCliente" oninput="filtrarClientes()" placeholder="Digite o nome do cliente">
+                    <select class="form-control" id="cliente" name="nome_cliente" onchange="salvarNomeCliente()">
+                        <?php foreach ($clientes as $cliente) { ?>
+                            <option value="<?php echo $cliente['id']; ?>"><?php echo $cliente['razao_social']; ?></option>
+                        <?php } ?>
+                    </select>
+                </div>  
                 
                 
                 <div class="solucao">
@@ -527,22 +528,35 @@
     </script>
 
     <script>
-            function filtrarClientes() {
-                var input, filter, select, option, txtValue;
-                input = document.getElementById('filtroCliente');
-                filter = input.value.toUpperCase();
-                select = document.getElementById('cliente');
-                option = select.getElementsByTagName('option');
-
-                for (var i = 0; i < option.length; i++) {
-                    txtValue = option[i].textContent || option[i].innerText;
-                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                        option[i].style.display = "";
-                    } else {
-                        option[i].style.display = "none";
-                    }
-                }
+          function filtrarClientes() {
+        var input, filter, select, option, i;
+        input = document.getElementById("filtroInputCliente");
+        filter = input.value.toUpperCase();
+        select = document.getElementById("cliente");
+        option = select.getElementsByTagName("option");
+        for (i = 0; i < option.length; i++) {
+            if (option[i].text.toUpperCase().indexOf(filter) > -1) {
+                option[i].style.display = "";
+            } else {
+                option[i].style.display = "none";
             }
+        }
+    }      
+
+    function salvarNomeCliente() {
+        var clienteSelecionado = document.getElementById("cliente").value;
+
+        // Enviar o nome do cliente selecionado para o servidor via AJAX
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                // Resposta do servidor (opcional)
+                console.log(this.responseText);
+            }
+        };
+        xhttp.open("GET", "salvar_nome_cliente.php?nome_cliente=" + clienteSelecionado, true);
+        xhttp.send();
+    }
 </script>
 
 </body>
