@@ -4,7 +4,9 @@ body {
 form{
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
-
+ .icons {
+  margin-top: 10px;
+ }
 /* Adicione outras regras de mídia query conforme necessário */
 .container {  display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -382,3 +384,6 @@ textarea#solucao {
        font-size: 1rem;
    }
 }
+
+
+

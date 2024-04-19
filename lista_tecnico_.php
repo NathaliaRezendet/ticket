@@ -332,14 +332,57 @@ if(isset($_POST['btnParar'])) {
                 </div>
 
                 <div class="tipo-de-problema">
-                    <label for="assunto1">Tipo de Problema:</label>
-                    <select class="form-control" id="assunto1" name="tipo_de_problema_2" onchange="mostrarFiltroCliente()">
+                    <label for="assunto2">Tipo de Problema:</label>
+                    <select class="form-control" id="assunto2" name="tipo_de_problema_2" onchange="mostrarFiltroCliente_2()">
                         <option value="flap">Flap</option>
                         <option value="oscilacao">Oscilação</option>
                         <option value="camera" id="camera">Câmera</option>
                         <option value="suporte">Suporte</option>
                     </select>
                 </div> 
+
+                <div id="filtroCliente_2" style="display: none;">
+                    <label for="filtroCliente_2">Filtrar Cliente:</label>
+                    <input type="text" id="filtroInputCliente_2" oninput="filtrarClientes_2()" placeholder="Digite o nome do cliente">
+                    <select class="form-control" id="cliente" name="nome_cliente" onchange="salvarNomeCliente_()">
+                        <?php foreach ($clientes as $cliente) { ?>
+                            <option value="<?php echo $cliente['id']; ?>"><?php echo $cliente['razao_social']; ?></option>
+                        <?php } ?>
+                    </select>
+
+                    <script>
+                        function mostrarFiltroCliente_2() {
+                            var tipoProblemaSelecionado_2 = document.getElementById("assunto2").value;
+                            var filtroCliente_2 = document.getElementById("filtroCliente_2");
+                            if (tipoProblemaSelecionado_2 === "camera") {
+                                filtroCliente_2.style.display = "block";
+                            } else {
+                                filtroCliente_2.style.display = "none";
+                            }
+                        }
+
+                        function filtrarClientes_2() {
+                            var input, filter, select, option, i;
+                            input = document.getElementById("filtroInputCliente_2");
+                            filter = input.value.toUpperCase();
+                            select = document.getElementById("cliente");
+                            option = select.getElementsByTagName("option");
+                            for (i = 0; i < option.length; i++) {
+                                if (option[i].text.toUpperCase().indexOf(filter) > -1) {
+                                    option[i].style.display = "";
+                                } else {
+                                    option[i].style.display = "none";
+                                }
+                        }
+                        }      
+
+                        function salvarNomeCliente_2() {
+                            var clienteSelecionado = document.getElementById("cliente").value;
+                            document.getElementById("nomeClienteSelecionado").value = clienteSelecionado;
+                        }
+
+                    </script>
+                </div>  
 
                 <div class="solucao">
                     <label for="solucao">Solução:</label>
@@ -427,6 +470,7 @@ if(isset($_POST['btnParar'])) {
             filtroCliente.style.display = "none";
         }
     }
+
 </script>
 
 </body>
