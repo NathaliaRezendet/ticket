@@ -90,7 +90,7 @@ if(isset($_POST['btnIniciar'])) {
                 
 
                 $stmt->execute();
-                echo "Contagem iniciada com sucesso.";
+                echo "<p id='successMessage1' class='success-message'>Contagem iniciada com sucesso.</p>";
             } catch(PDOException $e) {
                 echo "Erro ao iniciar a contagem: ". $e->getMessage();
             }
@@ -139,7 +139,7 @@ if(isset($_POST['btnParar'])) {
 
                 unset($numTicket);
                 unset($horaIni);
-                echo "Contagem parada com sucesso.";
+                echo "<p id='stopMessage1' class='stop-message'>Contagem parada com sucesso.</p>";
             } catch(PDOException $e) {
                 echo "Erro ao parar a contagem: ". $e->getMessage();
             }
@@ -151,7 +151,6 @@ if(isset($_POST['btnParar'])) {
     }
 }
 ?>
-
 
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -263,6 +262,7 @@ if(isset($_POST['btnParar'])) {
 <!-- Bootstrap JS -->
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 <!-- JavaScript para o cronômetro -->
+
 <script>
     function formatarTempo(segundos) {
         var horas = Math.floor(segundos / 3600);

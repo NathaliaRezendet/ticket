@@ -230,6 +230,36 @@ form.login-prin {
   float: right;
 }
 
+.success-message,
+.stop-message {
+  position: fixed;
+  top: 40%;
+  left: 52%;
+  transform: translate(-50%, -50%);
+  color: white;
+  padding: 20px 30px;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+  z-index: 1000;
+  animation: disappear 5s forwards;
+}
+
+.success-message {
+  background-color: #4CAF50;
+}
+
+.stop-message {
+  background-color: #af4c4c;
+
+}
+@keyframes disappear {
+  0% {opacity: 1;}
+  100% {opacity: 0;}
+}
+
 /* Estilos para telas menores que 768px */
 @media screen and (max-width: 768px) {
   #imgplayfibra {
@@ -321,4 +351,27 @@ textarea#solucao {
   width: 85% !important;
   margin-left: 5px;
 }
+}
+
+@media screen and (max-width: 768px) {
+  .success-message
+  .stop-message
+   {
+       top: 50%;
+       left: 50%;
+       transform: translate(-50%, -50%);
+       width: 80%;
+   }
+}
+
+@media screen and (max-width: 576px) {
+  .success-message
+  .stop-message
+  {
+       top: 50%;
+       left: 50%;
+       transform: translate(-50%, -50%);
+       width: 90%;
+       font-size: 1rem;
+   }
 }
