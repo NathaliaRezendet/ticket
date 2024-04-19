@@ -134,9 +134,9 @@ if(isset($_POST['btnIniciar2'])) {
             $stmt->bindParam(':observacao_2', $observacao_2);
             $stmt->bindParam(':numTicket', $numTicket);
             $stmt->execute();
-            echo "Manual ticket 2 atualizado com sucesso.";
+            echo "<p id='successMessage1' class='ticket-message'>Ticket atualizado com sucesso.</p>";
         } catch(PDOException $e) {
-            echo "Erro ao atualizar manual ticket 2: ". $e->getMessage();
+            echo "Erro ao atualizar ticket: ". $e->getMessage();
         }
     } else {
         echo "Número do ticket não encontrado.";
@@ -306,7 +306,6 @@ if(isset($_POST['btnParar'])) {
 
         <!-- Formulário 2 -->
         <div class="geral">
-            <p class="mt-3">Clique no botão abaixo para iniciar a contagem:</p>
             <p class="tarefa1">Iniciar tarefa 2?</p>
             <form method="post">
                 <div class="ticket"> 
